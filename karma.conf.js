@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/adzapier-privacy-policy-generator'),
+      dir: require('path').join(__dirname, './coverage/Krunal-Binekar-Movies-Project'),
       subdir: '.',
       reporters: [
         { type: 'html' },
