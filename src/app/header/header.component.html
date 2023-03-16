@@ -1,0 +1,43 @@
+<div appTheme>
+<mat-toolbar >
+    <mat-toolbar-row style="display: flex; justify-content: space-between;">
+      <div style="display: inline-flex;">
+        <mat-icon class="maticon" (click)="sidenav.toggle()">menu</mat-icon>
+      <!-- <h1>SimpleCRM</h1>
+      <span class="menu-spacer"></span> -->
+      
+        </div>
+        <div>
+          <mat-button-toggle-group #toggleBtn="matButtonToggleGroup">
+            <mat-button-toggle value="{{colour}}" (click)="togglee('light')" [checked]="(colour === 'light') ? true : false">
+                light
+            </mat-button-toggle>
+            <mat-button-toggle value="{{colour}}" (click)="toggle('dark')" [checked]="(colour === 'dark') ? true : false">
+                dark
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+          
+        </div>
+      </mat-toolbar-row>
+  
+  
+  </mat-toolbar>
+  <mat-sidenav-container >
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/home'">Home</a>
+  <!--      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/home/customplan'">Custom Plan</a>-->
+        <a mat-list-item (click)="sidenav.toggle()" >Contact Us</a>
+        <a mat-list-item *ngIf="currentUser" (click)="logout();sidenav.toggle()">Logout</a>
+
+  
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="main">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+</div>

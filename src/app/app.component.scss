@@ -1,0 +1,17 @@
+.hide {
+    display: none;
+  }
+
+  .flotingdiv{
+    position: fixed;
+    bottom: 0;
+    top: 84%;
+    right:0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .site-content{
+    padding: 25px;
+    background: var(--background) !important;
+    color: var(--on-background) !important;
+  }

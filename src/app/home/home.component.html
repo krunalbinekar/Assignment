@@ -1,0 +1,140 @@
+<section style="margin-top:55px;padding: 20px;height:100vh;">
+    <div class="listing">
+        <div class="listing__head d-flex justify-content-between">
+            <h3 class="listing__title mt-2">Movies</h3>
+            <div class="form">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control form-input inp" placeholder="Search anything..." [(ngModel)]="searchText">
+            </div>    
+        </div>
+        <div class="row" *ngIf="!loader">
+            <div class="col-md-3 listing__items" *ngFor="let item of moviesList?.data | filter: searchText:'title':'description':'genres'; let i = index">
+                <!-- <div [routerLink]="['/tv/', item.id]">
+                <div class="listing-item-style">
+                    <div class="overlay">
+                        <div class="hover"><i class="material-icons">play_arrow</i> PLAY NOW</div>
+                    </div>
+                    <img *ngIf="item?.poster_path"
+                        src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{item?.poster_path}}"
+                        [alt]="item.title ? item.title : item.name">
+                    <img *ngIf="!item?.poster_path" src="assets/images/default-movie.png"
+                        [alt]="item.title ? item.title : item.name">
+                    <h6>{{ item?.name }}</h6>
+                    <p class="rate"><i class="material-icons">star</i><span>{{item?.vote_average}}</span> /10</p>
+                    <p class="year"><span>{{item?.first_air_date | date: 'yyyy'}}</span>
+                    </p>
+                </div>
+            </div> -->
+                <div class="card movies__card" appTheme (click)="openModal(item,details)">
+                    <div class="text-center card-header" style="background-color: #7F00FF;">
+                        <img class="avatar_image" src="https://ui-avatars.com/api/?background=3795BD">
+                    </div>
+                    <div class="card-body mt-3">
+                        <div>
+                            <h3>{{item?.title}}</h3>
+                            <ul class="movie-gen">
+                                <li>PG-13 </li>
+                                <li>2h 49min </li>
+                                <li>{{item?.genres}}</li>
+                            </ul>
+                        </div>
+                        <div class="mr-grid summary-row">
+                            <div class="col2">
+                                <h6>SUMMARY</h6>
+                            </div>
+
+                        </div>
+                        <div class="mr-grid">
+                            <div class="col1">
+                                <p class="movie-description">{{item?.description}} </p>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="card-footer d-flex justify-content-center">
+                        <div class="text-center details-button">
+                            <a type="button" style="margin-left: 1px;">View details</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="loader" class="text-center align-items-center d-flex justify-content-center" style="margin-top: 100px;">
+            <div class="spinner-border text-center" style="color: #eb5a5a;width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+        </div>
+
+        <div class="text-center mt-5" *ngIf="!loader && apierror">
+            <p>Some Error occured kindly refresh</p>
+            <button class="btn" style="color: #7F00FF;" (click)="getMoviesList();">Refresh</button>
+        </div>
+        
+        <div class="mt-4 PrevNext text-center" *ngIf="!loader && !apierror" style="border: none;">
+            <a href="#">&#8249; Previous</a>
+            <a href="#">&nbsp;Next &#8250;</a>
+        </div>
+    </div>
+</section>
+
+<ng-template #details let-modal>
+    <div class="modal-popup" appTheme>
+    <div class="modal-header modal__header">
+        <!-- <h4 class="modal-title" id="modal-basic-title">Edit User Details</h4> -->
+        <!-- <button type="button" class="close" aria-label="Close" (click)="hideModal()">
+            <span aria-hidden="true">&times;</span>
+        </button> -->
+        <img class="modal__image" src="https://ui-avatars.com/api/?background=937DC2&size=178&font-size=0.2">
+    </div>
+    <div class="modal-body">
+        <div>
+            <h6>&nbsp;Title - {{modalDetails?.title}}</h6>
+            <ul class="movie-gen">
+                <li><h6>&nbsp;Genres - {{modalDetails?.genres}}</h6></li>
+            </ul>
+        </div>
+        <!-- <div class="mr-grid modal-summary-row">
+            <div class="col2">
+                <h6></h6>
+            </div>
+
+        </div> -->
+        <div class="mr-grid">
+            <div class="col1">
+                <p class="movie-gen">Description - {{modalDetails?.description}} </p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="modal-footer d-flex justify-content-center">
+        <div class="text-center details-buttons">
+            <a type="button" style="margin-left: 2px;" (click)="closemodal()">Close</a>
+        </div>
+    </div>
+    </div>
+</ng-template>
+<!-- <div class="row">
+	<div class="hero-container col" *ngFor="let item of moviesList.data | slice:0:18">
+		<div class="main-container">
+			<div class="poster-container">
+				<a href="#"><img src="https://i.ibb.co/ThPNnzM/blade-runner.jpg" class="poster" /></a>
+			</div>
+			<div class="ticket-container">
+				<div class="ticket__content">
+					<h4 class="ticket__movie-title">Blade Runner 2049</h4>
+					<p class="ticket__movie-slogan">
+						More human than human is our motto.
+					</p>
+					<p class="ticket__current-price">$28.00</p>
+					<p class="ticket__old-price">$44.99</p>
+					<button class="ticket__buy-btn">Buy now</button>
+				</div>
+			</div>
+		</div>
+	</div>
+    </div> -->
