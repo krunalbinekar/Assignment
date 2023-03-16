@@ -7,7 +7,7 @@ import { ThemeService } from './themes/theme.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'adzapier-privacy-policy-generator';
+  title = 'Krunal-Binekar-Movies-Project';
 
   constructor(private themeService: ThemeService){
     const a = localStorage.getItem('theme')
