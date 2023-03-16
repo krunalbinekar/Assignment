@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'adzapier-privacy-policy-generator'`, () => {
+  it(`should have as title 'Krunal-Binekar-Movies-Project'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('adzapier-privacy-policy-generator');
+    expect(app.title).toEqual('Krunal-Binekar-Movies-Project');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('adzapier-privacy-policy-generator app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('Krunal-Binekar-Movies-Project app is running!');
   });
 });
