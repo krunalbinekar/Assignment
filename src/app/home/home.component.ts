@@ -26,10 +26,12 @@ export class HomeComponent implements OnInit {
     this.service.currentUser.subscribe(x => {
       this.currentUser = x;
       if (this.currentUser !== null && this.currentUser!==undefined && this.currentUser) {
-        this.getMoviesList();
+       // this.getMoviesList();
 
       }
     });
+	
+	  this.getMoviesList();
     // this.getAvatar();
   }
 
