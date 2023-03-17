@@ -34,32 +34,34 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.submitted = true;
-    this.loading = true;
-    this.isOpen = false;
-    const payload = {
-      username: this.loginForm.value.username,
-      password: this.loginForm.value.password,
-    };
-    if (this.loginForm.invalid) {
-      return;
-    } else {
-      this.service.login(payload).subscribe(
-        (response) => {
-          if (response) {
-            this.loading = false;
-            this.isOpen = true;
-            this.alertMsg = 'Logged in Successfully';
-            this.alertType = 'success';
-          }
-        },
-        (error) => {
-          this.alertMsg = error.message;
-          this.isOpen = true;
-          this.alertType = 'danger';
-        }
-      );
-    }
+//     this.submitted = true;
+//     this.loading = true;
+//     this.isOpen = false;
+//     const payload = {
+//       username: this.loginForm.value.username,
+//       password: this.loginForm.value.password,
+//     };
+//     if (this.loginForm.invalid) {
+//       return;
+//     } else {
+//       this.service.login(payload).subscribe(
+//         (response) => {
+//           if (response) {
+//             this.loading = false;
+//             this.isOpen = true;
+//             this.alertMsg = 'Logged in Successfully';
+//             this.alertType = 'success';
+//           }
+//         },
+//         (error) => {
+//           this.alertMsg = error.message;
+//           this.isOpen = true;
+//           this.alertType = 'danger';
+//         }
+//       );
+//     }
+    
+    this.router.navigate(['/home']);
 
   //   const e = {
   //     'is_success': true,
